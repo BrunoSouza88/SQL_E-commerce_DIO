@@ -34,7 +34,7 @@ FROM Order
 GROUP BY CustomerID
 HAVING COUNT(*) > 5;
 
--- Retrieve order details including customer name and product name
+-- Retrieve order details including customer name and product name:
 SELECT Order.OrderID, Customer.Name AS CustomerName, Product.Name AS ProductName
 FROM Order
 INNER JOIN Customer ON Order.CustomerID = Customer.CustomerID
