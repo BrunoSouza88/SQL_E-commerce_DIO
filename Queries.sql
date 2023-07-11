@@ -21,3 +21,21 @@ INNER JOIN Stock ON Product.ProductID = Stock.ProductID;
 SELECT Supplier.Name AS SupplierName, Product.Name AS ProductName
 FROM Supplier
 INNER JOIN Product ON Supplier.SupplierID = Product.SupplierID;
+
+-- Retrieve customers sorted by name in ascending order:
+SELECT * FROM Customer ORDER BY Name ASC;
+
+-- Retrieve products sorted by price in descending order:
+SELECT * FROM Product ORDER BY Price DESC;
+
+-- Retrieve customers who have made more than 5 orders:
+SELECT CustomerID, COUNT(*) AS NumberOfOrders
+FROM Order
+GROUP BY CustomerID
+HAVING COUNT(*) > 5;
+
+-- Retrieve order details including customer name and product name
+SELECT Order.OrderID, Customer.Name AS CustomerName, Product.Name AS ProductName
+FROM Order
+INNER JOIN Customer ON Order.CustomerID = Customer.CustomerID
+INNER JOIN Product ON Order.ProductID = Product.ProductID;
